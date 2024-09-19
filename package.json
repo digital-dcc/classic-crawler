@@ -1,5 +1,5 @@
 {
-  "name": "digital-dcc-classic-crawler",
+  "name": "classic-crawler",
   "type": "module",
   "version": "0.0.1",
   "scripts": {
