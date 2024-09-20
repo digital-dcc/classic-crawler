@@ -1,0 +1,21 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { CharacterSheetPage } from '../../components/character-sheet-page';
+import { app } from '../../firebase/client';
+import {
+	doc,
+	getDoc,
+	getFirestore,
+} from 'firebase/firestore';
+
+const { id } = Astro.params;
+const db = getFirestore(app);
+const docRef = doc(db, 'characters', id);
+const result = await getDoc(docRef);
+const data = result.data();
+---
+
+<Layout title="character sheet">
+	<CharacterSheetPage character-id={id} character-data={JSON.stringify(data)} client:load />
+</Layout>
+

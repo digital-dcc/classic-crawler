@@ -10,6 +10,11 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^4.15.8"
+    "@astrojs/lit": "^4.3.0",
+    "@astrojs/netlify": "^5.5.3",
+    "@digital-dcc/components": "^0.0.4",
+    "astro": "^4.15.8",
+    "firebase": "^10.13.2",
+    "firebase-admin": "^12.5.0"
   }
 }
