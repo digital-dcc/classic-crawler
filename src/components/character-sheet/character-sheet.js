@@ -101,16 +101,6 @@ export class CharacterSheet extends LitElement {
     this.checkPenaltySelected = !this.checkPenaltySelected;
   }
 
-  onHitPointsChanged(e) {
-    this.data.hp = e.detail.hp;
-    this.data.maxHP = e.detail.maxHP;
-    this.dispatchEvent(
-      new CustomEvent('change', {
-        detail: {...JSON.parse(JSON.stringify(this.data))},
-      })
-    );
-  }
-
   handleNotesChanged(e) {
     this.data.notes = e.detail.value;
     this.dispatchEvent(
@@ -388,6 +378,7 @@ export class CharacterSheet extends LitElement {
   }
 
   onHitPointsChange(e) {
+		console.log('hp change', e.detail)
     this.data.hp = e.detail.hp;
     this.data.maxHP = e.detail.maxHP;
     this.emitChangeEvent();
@@ -600,7 +591,7 @@ export class CharacterSheet extends LitElement {
               hp=${this.data.hp}
               max-hp=${this.data.maxHP}
               @name-clicked="${() => (this.hitPointsEditorOpen = true)}"
-              @change="${this.onHitPointsChanged}"
+              @change="${this.onHitPointsChange}"
             ></hit-points>
           </section>
         </section>

@@ -1,21 +1,47 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import { CharacterSheetPage } from '../../components/character-sheet-page';
-import { app } from '../../firebase/client';
-import {
-	doc,
-	getDoc,
-	getFirestore,
-} from 'firebase/firestore';
+import { app } from "../../firebase/server";
+import { getFirestore } from "firebase-admin/firestore";
+import { getAuth } from 'firebase-admin/auth';
 
+const auth = getAuth(app);
+
+if (!Astro.cookies.has("__session")) {
+	return new Response('Unauthorized', { status: 401 });
+}
+
+const sessionCookie = Astro.cookies.get("__session").value;
+const decodedCookie = await auth.verifySessionCookie(sessionCookie);
+if (!decodedCookie) {
+	return new Response('Unauthorized', { status: 401 });
+}
+
+const userId = decodedCookie.uid;
 const { id } = Astro.params;
 const db = getFirestore(app);
-const docRef = doc(db, 'characters', id);
-const result = await getDoc(docRef);
-const data = result.data();
+
+const docRef = db.collection('characters').doc(id);
+const doc = await docRef.get();
+
+if (!doc.exists) {
+	return Astro.redirect("/404");
+}
+
+const data = doc.data();
+
+if (!data) {
+  return Astro.redirect("/404");
+}
+
+if (data.owner !== userId) {
+	return new Response('Unauthorized', { status: 401 });
+}
+
+const token = await auth.createCustomToken(userId);
 ---
 
 <Layout title="character sheet">
-	<CharacterSheetPage character-id={id} character-data={JSON.stringify(data)} client:load />
+	<CharacterSheetPage user-token={token} user-id={userId} character-id={id} character-data={JSON.stringify(data)} client:only />
 </Layout>
 

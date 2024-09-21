@@ -258,6 +258,7 @@ export class DiceRoller extends LitElement {
   }
 
   render() {
+		console.log('name', this.diceRoll?.name)
     return html`
       <modal-dialog .open="${this.open}" @close="${this.onClose}">
         <h1>${this.diceRoll?.name}</h1>

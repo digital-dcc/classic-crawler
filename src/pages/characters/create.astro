@@ -1,0 +1,25 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { app } from "../../firebase/server";
+import { getAuth } from 'firebase-admin/auth';
+import { CharactersCreatePage } from "../../components/characters-create-page";
+
+const auth = getAuth(app);
+
+if (!Astro.cookies.has("__session")) {
+	return new Response('Unauthorized', { status: 401 });
+}
+
+const sessionCookie = Astro.cookies.get("__session").value;
+const decodedCookie = await auth.verifySessionCookie(sessionCookie);
+if (!decodedCookie) {
+	return new Response('Unauthorized', { status: 401 });
+}
+
+const userId = decodedCookie.uid;
+const token = await auth.createCustomToken(userId);
+---
+
+<Layout title="character sheet">
+	<CharactersCreatePage user-token={token} user-id={userId} client:only />
+</Layout>

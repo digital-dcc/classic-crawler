@@ -1,0 +1,32 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { CharactersListPage } from "../components/characters-list-page";
+import { app } from "../firebase/server";
+import { getFirestore } from "firebase-admin/firestore";
+import { getAuth } from 'firebase-admin/auth';
+
+const auth = getAuth(app);
+
+if (!Astro.cookies.has("__session")) {
+	return new Response('Unauthorized', { status: 401 });
+}
+
+const sessionCookie = Astro.cookies.get("__session").value;
+const decodedCookie = await auth.verifySessionCookie(sessionCookie);
+if (!decodedCookie) {
+	return new Response('Unauthorized', { status: 401 });
+}
+
+const userId = decodedCookie.uid;
+const db = getFirestore(app);
+
+const ref = db.collection('characters').where('owner', '==', userId);
+const result = await ref.get();
+const characterData = result.docs.map((doc) => ({ id: doc.id, data: doc.data() }));
+const token = await auth.createCustomToken(userId);
+---
+
+<Layout title="character sheet">
+	<CharactersListPage user-token={token} user-id={userId} character-data={JSON.stringify(characterData)} client:only />
+</Layout>
+
