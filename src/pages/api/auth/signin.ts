@@ -9,7 +9,7 @@ export const GET: APIRoute = async ({ request, cookies, redirect }) => {
   const idToken = request.headers.get("Authorization")?.split("Bearer ")[1];
   if (!idToken) {
     return new Response(
-      "No token found",
+      `No token found`,
       { status: 401 }
     );
   }
@@ -19,7 +19,7 @@ export const GET: APIRoute = async ({ request, cookies, redirect }) => {
     await auth.verifyIdToken(idToken);
   } catch (error) {
     return new Response(
-      "Invalid token",
+      `Invalid token : ${error.message} ${error.stack}`,
       { status: 401 }
     );
   }
