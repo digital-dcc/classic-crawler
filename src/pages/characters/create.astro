@@ -3,6 +3,7 @@ import Layout from "../../layouts/Layout.astro";
 import { app } from "../../firebase/server";
 import { getAuth } from 'firebase-admin/auth';
 import { CharactersCreatePage } from "../../components/characters-create-page";
+import { HeaderBar } from "../../components/header-bar";
 
 const auth = getAuth(app);
 
@@ -21,5 +22,6 @@ const token = await auth.createCustomToken(userId);
 ---
 
 <Layout title="character sheet">
+	<HeaderBar />
 	<CharactersCreatePage user-token={token} user-id={userId} client:only />
 </Layout>

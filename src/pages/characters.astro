@@ -4,6 +4,7 @@ import { CharactersListPage } from "../components/characters-list-page";
 import { app } from "../firebase/server";
 import { getFirestore } from "firebase-admin/firestore";
 import { getAuth } from 'firebase-admin/auth';
+import { HeaderBar } from "../components/header-bar";
 
 const auth = getAuth(app);
 
@@ -27,6 +28,7 @@ const token = await auth.createCustomToken(userId);
 ---
 
 <Layout title="character sheet">
+	<HeaderBar />
 	<CharactersListPage user-token={token} user-id={userId} character-data={JSON.stringify(characterData)} client:only />
 </Layout>
 

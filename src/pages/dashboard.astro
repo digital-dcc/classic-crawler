@@ -2,6 +2,7 @@
 import { app } from "../firebase/server";
 import { getAuth } from "firebase-admin/auth";
 import Layout from "../layouts/Layout.astro";
+import { HeaderBar } from "../components/header-bar";
 
 const auth = getAuth(app);
 
@@ -19,9 +20,29 @@ if (!user) {
 ---
 
 <Layout title="dashboard">
-  <h1>Welcome {user.displayName}</h1>
-  <p>We are happy to see you here</p>
-  <form action="/api/auth/signout">
-    <button type="submit">Sign out</button>
-  </form>
+	<HeaderBar />
+	<section class="main">
+		<h1>Welcome {user.displayName}</h1>
+		<p>We are happy to see you here</p>
+		<div class="signout-form">
+			<form action="/api/auth/signout">
+				<button type="submit">Sign out</button>
+			</form>
+		</div>
+	</section>
 </Layout>
+
+<style>
+	.main {
+		width: 1140px;
+		margin: 0 auto;
+	}
+	.signout-form button {
+		margin: 0;
+		padding: 10px 20px;
+		border-radius: 5px;
+		border: 1px #ccc solid;
+		background-color: #f3f3f3;
+		cursor: pointer;
+	}
+</style>

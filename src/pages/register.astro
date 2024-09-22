@@ -1,17 +1,50 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import { HeaderBar } from "../components/header-bar";
 ---
 
 <Layout title="Register">
-  <h1>Register</h1>
-  <p>Already have an account? <a href="/signin">Sign in</a></p>
-  <form action="/api/auth/register" method="post">
-    <label for="name">Name</label>
-    <input type="text" name="name" id="name" />
-    <label for="email" for="email">Email</label>
-    <input type="email" name="email" id="email" />
-    <label for="password">Password</label>
-    <input type="password" name="password" id="password" />
-    <button type="submit">Login</button>
-  </form>
+	<HeaderBar />
+	<section class="main">
+		<h1>Register</h1>
+		<div class="signin-link">
+			<p>Already have an account? <a href="/signin">Sign in</a></p>
+		</div>
+		<div class="signin-form">
+			<form action="/api/auth/register" method="post">
+				<label for="name">Name</label>
+				<input type="text" name="name" id="name" />
+				<label for="email" for="email">Email</label>
+				<input type="email" name="email" id="email" />
+				<label for="password">Password</label>
+				<input type="password" name="password" id="password" />
+				<button type="submit">Login</button>
+			</form>
+		</div>
+		</section>
 </Layout>
+
+<style>
+	.main {
+		width: 1140px;
+		margin: 0 auto;
+	}
+	.register-link {}
+	.signin-form input {
+		border-radius: 5px;
+		border: 1px #ccc solid;
+		margin: 0;
+		padding: 10px;
+	}
+	.mb-10 {
+		margin-bottom: 10px;
+	}
+	.google-signin button, .signin-form button {
+		margin: 0;
+		padding: 10px 20px;
+		border-radius: 5px;
+		border: 1px #ccc solid;
+		background-color: #f3f3f3;
+		cursor: pointer;
+	}
+</style>
