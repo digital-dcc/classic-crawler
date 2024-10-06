@@ -4,7 +4,7 @@ export const occupations = new Map([
     {
 			race: 'human',
       occupation: 'Alchemist',
-      roll: '01',
+      roll: 1,
       trainedWeapon: 'Staff',
       tradeGoods: 'Oil, 1 flask',
     },
@@ -14,7 +14,7 @@ export const occupations = new Map([
     {
 			race: 'human',
       occupation: 'Animal trainer',
-      roll: '02',
+      roll: 2,
       trainedWeapon: 'Club',
       tradeGoods: 'Pony',
     },
@@ -24,8 +24,8 @@ export const occupations = new Map([
     {
 			race: 'human',
       occupation: 'Armorer',
-      roll: '03',
-      trainedWeapon: 'Hammer (as club)',
+      roll: 3,
+      trainedWeapon: 'Hammer',
       tradeGoods: 'Iron helmet',
     },
   ],
@@ -34,7 +34,7 @@ export const occupations = new Map([
     {
 			race: 'human',
       occupation: 'Astrologer',
-      roll: '04',
+      roll: 4,
       trainedWeapon: 'Dagger',
       tradeGoods: 'Spyglass',
     },
@@ -44,8 +44,8 @@ export const occupations = new Map([
     {
 			race: 'human',
       occupation: 'Barber',
-      roll: '05',
-      trainedWeapon: 'Razor (as dagger)',
+      roll: 5,
+      trainedWeapon: 'Razor',
       tradeGoods: 'Scissors',
     },
   ],
@@ -54,7 +54,7 @@ export const occupations = new Map([
     {
 			race: 'human',
       occupation: 'Beadle',
-      roll: '06',
+      roll: 6,
       trainedWeapon: 'Staff',
       tradeGoods: 'Holy symbol',
     },
@@ -64,7 +64,7 @@ export const occupations = new Map([
     {
 			race: 'human',
       occupation: 'Beekeeper',
-      roll: '07',
+      roll: 7,
       trainedWeapon: 'Staff',
       tradeGoods: 'Jar of honey',
     },
@@ -74,8 +74,8 @@ export const occupations = new Map([
     {
 			race: 'human',
       occupation: 'Blacksmith',
-      roll: '08',
-      trainedWeapon: 'Hammer (as club)',
+      roll: 8,
+      trainedWeapon: 'Hammer',
       tradeGoods: 'Steel tongs',
     },
   ],
@@ -84,8 +84,8 @@ export const occupations = new Map([
     {
 			race: 'human',
       occupation: 'Butcher',
-      roll: '09',
-      trainedWeapon: 'Cleaver (as axe)',
+      roll: 9,
+      trainedWeapon: 'Cleaver',
       tradeGoods: 'Side of beef',
     },
   ],
@@ -94,7 +94,7 @@ export const occupations = new Map([
     {
 			race: 'human',
       occupation: 'Caravan guard',
-      roll: '10',
+      roll: 10,
       trainedWeapon: 'Short sword',
       tradeGoods: 'Linen, 1 yard',
     },
@@ -104,8 +104,8 @@ export const occupations = new Map([
     {
 			race: 'human',
       occupation: 'Cheesemaker',
-      roll: '11',
-      trainedWeapon: 'Cudgel (as staff)',
+      roll: 11,
+      trainedWeapon: 'Cudgel',
       tradeGoods: 'Stinky cheese',
     },
   ],
@@ -114,8 +114,8 @@ export const occupations = new Map([
     {
 			race: 'human',
       occupation: 'Cobbler',
-      roll: '12',
-      trainedWeapon: 'Awl (as dagger)',
+      roll: 12,
+      trainedWeapon: 'Awl',
       tradeGoods: 'Shoehorn',
     },
   ],
@@ -124,7 +124,7 @@ export const occupations = new Map([
     {
 			race: 'human',
       occupation: 'Confidence artist',
-      roll: '13',
+      roll: 13,
       trainedWeapon: 'Dagger',
       tradeGoods: 'Quality cloak',
     },
@@ -134,8 +134,8 @@ export const occupations = new Map([
     {
 			race: 'human',
       occupation: 'Cooper',
-      roll: '14',
-      trainedWeapon: 'Crowbar (as club)',
+      roll: 14,
+      trainedWeapon: 'Crowbar',
       tradeGoods: 'Barrel',
     },
   ],
@@ -144,8 +144,8 @@ export const occupations = new Map([
     {
 			race: 'human',
       occupation: 'Costermonger',
-      roll: '15',
-      trainedWeapon: 'Knife (as dagger)',
+      roll: 15,
+      trainedWeapon: 'Knife',
       tradeGoods: 'Fruit',
     },
   ],
@@ -154,7 +154,7 @@ export const occupations = new Map([
     {
 			race: 'human',
       occupation: 'Cutpurse',
-      roll: '16',
+      roll: 16,
       trainedWeapon: 'Dagger',
       tradeGoods: 'Small chest',
     },
@@ -164,8 +164,8 @@ export const occupations = new Map([
     {
 			race: 'human',
       occupation: 'Ditch digger',
-      roll: '17',
-      trainedWeapon: 'Shovel (as staff)',
+      roll: 17,
+      trainedWeapon: 'Shovel',
       tradeGoods: 'Fine dirt, 1 lb.',
     },
   ],
@@ -174,8 +174,8 @@ export const occupations = new Map([
     {
 			race: 'human',
       occupation: 'Dock worker',
-      roll: '18',
-      trainedWeapon: 'Pole (as staff)',
+      roll: 18,
+      trainedWeapon: 'Pole',
       tradeGoods: '1 late RPG book',
     },
   ],
@@ -184,8 +184,8 @@ export const occupations = new Map([
     {
 			race: 'dwarf',
       occupation: 'Dwarven apothecarist',
-      roll: '19',
-      trainedWeapon: 'Cudgel (as staff)',
+      roll: 19,
+      trainedWeapon: 'Cudgel',
       tradeGoods: 'Steel vial',
     },
   ],
@@ -194,8 +194,8 @@ export const occupations = new Map([
     {
 			race: 'dwarf',
       occupation: 'Dwarven blacksmith',
-      roll: '20',
-      trainedWeapon: 'Hammer (as club)',
+      roll: 20,
+      trainedWeapon: 'Hammer',
       tradeGoods: 'Mithril, 1 oz.',
     },
   ],
@@ -204,8 +204,8 @@ export const occupations = new Map([
     {
 			race: 'dwarf',
       occupation: 'Dwarven chest-maker',
-      roll: '21',
-      trainedWeapon: 'Chisel (as dagger)',
+      roll: 21,
+      trainedWeapon: 'Chisel',
       tradeGoods: 'Wood, 10 lbs.',
     },
   ],
@@ -214,9 +214,9 @@ export const occupations = new Map([
     {
 			race: 'dwarf',
       occupation: 'Dwarven herder',
-      roll: '22',
+      roll: 22,
       trainedWeapon: 'Staff',
-      tradeGoods: 'Sow**',
+      tradeGoods: 'Sow',
     },
   ],
   [
@@ -224,8 +224,8 @@ export const occupations = new Map([
     {
 			race: 'dwarf',
       occupation: 'Dwarven miner',
-      roll: '23-24',
-      trainedWeapon: 'Pick (as club)',
+      roll: [23, 24],
+      trainedWeapon: 'Pick',
       tradeGoods: 'Lantern',
     },
   ],
@@ -234,8 +234,8 @@ export const occupations = new Map([
     {
 			race: 'dwarf',
       occupation: 'Dwarven mushroom-farmer',
-      roll: '25',
-      trainedWeapon: 'Shovel (as staff)',
+      roll: 25,
+      trainedWeapon: 'Shovel',
       tradeGoods: 'Sack',
     },
   ],
@@ -244,7 +244,7 @@ export const occupations = new Map([
     {
 			race: 'dwarf',
       occupation: 'Dwarven rat-catcher',
-      roll: '26',
+      roll: 26,
       trainedWeapon: 'Club',
       tradeGoods: 'Net',
     },
@@ -254,7 +254,7 @@ export const occupations = new Map([
     {
 			race: 'dwarf',
       occupation: 'Dwarven stonemason',
-      roll: '27-28',
+      roll: [27, 28],
       trainedWeapon: 'Hammer',
       tradeGoods: 'Fine stone, 10 lbs.',
     },
@@ -264,7 +264,7 @@ export const occupations = new Map([
     {
 			race: 'elf',
       occupation: 'Elven artisan',
-      roll: '29',
+      roll: 29,
       trainedWeapon: 'Staff',
       tradeGoods: 'Clay, 1 lb.',
     },
@@ -274,8 +274,8 @@ export const occupations = new Map([
     {
 			race: 'elf',
       occupation: 'Elven barrister',
-      roll: '30',
-      trainedWeapon: 'Quill (as dart)',
+      roll: 30,
+      trainedWeapon: 'Quill',
       tradeGoods: 'Book',
     },
   ],
@@ -284,8 +284,8 @@ export const occupations = new Map([
     {
 			race: 'elf',
       occupation: 'Elven chandler',
-      roll: '31',
-      trainedWeapon: 'Scissors (as dagger)',
+      roll: 31,
+      trainedWeapon: 'Scissors',
       tradeGoods: 'Candles, 20',
     },
   ],
@@ -294,7 +294,7 @@ export const occupations = new Map([
     {
 			race: 'elf',
       occupation: 'Elven falconer',
-      roll: '32',
+      roll: 32,
       trainedWeapon: 'Dagger',
       tradeGoods: 'Falcon',
     },
@@ -304,8 +304,8 @@ export const occupations = new Map([
     {
 			race: 'elf',
       occupation: 'Elven forester',
-      roll: '33-34',
-      trainedWeapon: 'Shortbow',
+      roll: [33, 34],
+      trainedWeapon: 'Staff',
       tradeGoods: 'Herbs, 1 lb.',
     },
   ],
@@ -314,8 +314,8 @@ export const occupations = new Map([
     {
 			race: 'elf',
       occupation: 'Elven glassblower',
-      roll: '35',
-      trainedWeapon: 'Dagger',
+      roll: 35,
+      trainedWeapon: 'Hammer',
       tradeGoods: 'Glass beads',
     },
   ],
@@ -324,8 +324,8 @@ export const occupations = new Map([
     {
 			race: 'elf',
       occupation: 'Elven navigator',
-      roll: '36',
-      trainedWeapon: 'Pitchfork (as spear)',
+      roll: 36,
+      trainedWeapon: 'Shortbow',
       tradeGoods: 'Spyglass',
     },
   ],
@@ -334,7 +334,7 @@ export const occupations = new Map([
     {
 			race: 'elf',
       occupation: 'Elven sage',
-      roll: '37-38',
+      roll: [37, 38],
       trainedWeapon: 'Dagger',
       tradeGoods: 'Parchment and quill pen',
     },
@@ -344,9 +344,9 @@ export const occupations = new Map([
     {
 			race: 'human',
       occupation: 'Farmer',
-      roll: '39-47',
-      trainedWeapon: 'Club',
-      tradeGoods: 'Hen**',
+      roll: [39, 40, 41, 42, 43, 44, 45, 46, 47],
+      trainedWeapon: 'Pitchfork',
+      tradeGoods: 'Hen',
     },
   ],
   [
@@ -354,8 +354,8 @@ export const occupations = new Map([
     {
 			race: 'human',
       occupation: 'Fortune-teller',
-      roll: '48',
-      trainedWeapon: 'Tarot deck',
+      roll: 48,
+      trainedWeapon: 'Dagger',
       tradeGoods: 'Tarot deck',
     },
   ],
@@ -364,8 +364,8 @@ export const occupations = new Map([
     {
 			race: 'human',
       occupation: 'Gambler',
-      roll: '49',
-      trainedWeapon: 'Dice',
+      roll: 49,
+      trainedWeapon: 'Club',
       tradeGoods: 'Dice',
     },
   ],
@@ -374,8 +374,8 @@ export const occupations = new Map([
     {
 			race: 'human',
       occupation: 'Gongfarmer',
-      roll: '50',
-      trainedWeapon: 'Sack of night soil',
+      roll: 50,
+      trainedWeapon: 'Trowel',
       tradeGoods: 'Sack of night soil',
     },
   ],
@@ -384,8 +384,8 @@ export const occupations = new Map([
     {
 			race: 'human',
       occupation: 'Grave digger',
-      roll: '51-52',
-      trainedWeapon: 'Trowel',
+      roll: [51, 52],
+      trainedWeapon: 'Shovel',
       tradeGoods: 'Trowel',
     },
   ],
@@ -394,8 +394,8 @@ export const occupations = new Map([
     {
 			race: 'human',
       occupation: 'Guild beggar',
-      roll: '53-54',
-      trainedWeapon: 'Crutches',
+      roll: [53, 54],
+      trainedWeapon: 'Sling',
       tradeGoods: 'Crutches',
     },
   ],
@@ -404,8 +404,8 @@ export const occupations = new Map([
     {
 			race: 'halfling',
       occupation: 'Halfling chicken butcher',
-      roll: '55',
-      trainedWeapon: 'Chicken meat, 5 lbs.',
+      roll: 55,
+      trainedWeapon: 'Handaxe',
       tradeGoods: 'Chicken meat, 5 lbs.',
     },
   ],
@@ -414,8 +414,8 @@ export const occupations = new Map([
     {
 			race: 'halfling',
       occupation: 'Halfling dyer',
-      roll: '56-57',
-      trainedWeapon: 'Fabric, 3 yards',
+      roll: [56, 57],
+      trainedWeapon: 'Staff',
       tradeGoods: 'Fabric, 3 yards',
     },
   ],
@@ -424,8 +424,8 @@ export const occupations = new Map([
     {
 			race: 'halfling',
       occupation: 'Halfling glovemaker',
-      roll: '58',
-      trainedWeapon: 'Gloves, 4 pairs',
+      roll: 58,
+      trainedWeapon: 'Awl',
       tradeGoods: 'Gloves, 4 pairs',
     },
   ],
@@ -434,8 +434,8 @@ export const occupations = new Map([
     {
 			race: 'halfling',
       occupation: 'Halfling gypsy',
-      roll: '59',
-      trainedWeapon: 'Hex doll',
+      roll: 59,
+      trainedWeapon: 'Sling',
       tradeGoods: 'Hex doll',
     },
   ],
@@ -444,8 +444,8 @@ export const occupations = new Map([
     {
 			race: 'halfling',
       occupation: 'Halfling haberdasher',
-      roll: '60',
-      trainedWeapon: 'Fine suits, 3 sets',
+      roll: 60,
+      trainedWeapon: 'Scissors',
       tradeGoods: 'Fine suits, 3 sets',
     },
   ],
@@ -454,8 +454,8 @@ export const occupations = new Map([
     {
 			race: 'halfling',
       occupation: 'Halfling mariner',
-      roll: '61',
-      trainedWeapon: 'Sailcloth, 2 yards',
+      roll: 61,
+      trainedWeapon: 'Knife',
       tradeGoods: 'Sailcloth, 2 yards',
     },
   ],
@@ -464,8 +464,8 @@ export const occupations = new Map([
     {
 			race: 'halfling',
       occupation: 'Halfling moneylender',
-      roll: '62',
-      trainedWeapon: '5 gp, 10 sp, 200 cp',
+      roll: 62,
+      trainedWeapon: 'Short sword',
       tradeGoods: '5 gp, 10 sp, 200 cp',
     },
   ],
@@ -474,8 +474,8 @@ export const occupations = new Map([
     {
 			race: 'halfling',
       occupation: 'Halfling trader',
-      roll: '63',
-      trainedWeapon: '20 sp',
+      roll: 63,
+      trainedWeapon: 'Short sword',
       tradeGoods: '20 sp',
     },
   ],
@@ -484,8 +484,8 @@ export const occupations = new Map([
     {
 			race: 'halfling',
       occupation: 'Halfling vagrant',
-      roll: '64',
-      trainedWeapon: 'Begging bowl',
+      roll: 64,
+      trainedWeapon: 'Club',
       tradeGoods: 'Begging bowl',
     },
   ],
@@ -494,8 +494,8 @@ export const occupations = new Map([
     {
 			race: 'human',
       occupation: 'Healer',
-      roll: '65',
-      trainedWeapon: 'Holy water, 1 vial',
+      roll: 65,
+      trainedWeapon: 'Club',
       tradeGoods: 'Holy water, 1 vial',
     },
   ],
@@ -504,8 +504,8 @@ export const occupations = new Map([
     {
 			race: 'human',
       occupation: 'Herbalist',
-      roll: '66',
-      trainedWeapon: 'Herbs, 1 lb.',
+      roll: 66,
+      trainedWeapon: 'Club',
       tradeGoods: 'Herbs, 1 lb.',
     },
   ],
@@ -514,8 +514,8 @@ export const occupations = new Map([
     {
 			race: 'human',
       occupation: 'Herder',
-      roll: '67',
-      trainedWeapon: 'Herding dog**',
+      roll: 67,
+      trainedWeapon: 'Staff',
       tradeGoods: 'Herding dog**',
     },
   ],
@@ -524,8 +524,8 @@ export const occupations = new Map([
     {
 			race: 'human',
       occupation: 'Hunter',
-      roll: '68-69',
-      trainedWeapon: 'Deer pelt',
+      roll: [68, 69],
+      trainedWeapon: 'Shortbow',
       tradeGoods: 'Deer pelt',
     },
   ],
@@ -534,8 +534,8 @@ export const occupations = new Map([
     {
 			race: 'human',
       occupation: 'Indentured servant',
-      roll: '70',
-      trainedWeapon: 'Locket',
+      roll: 70,
+      trainedWeapon: 'Staff',
       tradeGoods: 'Locket',
     },
   ],
@@ -544,8 +544,8 @@ export const occupations = new Map([
     {
 			race: 'human',
       occupation: 'Jester',
-      roll: '71',
-      trainedWeapon: 'Silk clothes',
+      roll: 71,
+      trainedWeapon: 'Dart',
       tradeGoods: 'Silk clothes',
     },
   ],
@@ -554,7 +554,7 @@ export const occupations = new Map([
     {
 			race: 'human',
       occupation: 'Jeweler',
-      roll: '72',
+      roll: 72,
       trainedWeapon: 'Dagger',
       tradeGoods: 'Gem worth 20 gp',
     },
@@ -564,7 +564,7 @@ export const occupations = new Map([
     {
 			race: 'human',
       occupation: 'Locksmith',
-      roll: '73',
+      roll: 73,
       trainedWeapon: 'Dagger',
       tradeGoods: 'Fine tools',
     },
@@ -574,7 +574,7 @@ export const occupations = new Map([
     {
 			race: 'human',
       occupation: 'Mendicant',
-      roll: '74',
+      roll: 74,
       trainedWeapon: 'Club',
       tradeGoods: 'Cheese dip',
     },
@@ -584,7 +584,7 @@ export const occupations = new Map([
     {
 			race: 'human',
       occupation: 'Mercenary',
-      roll: '75',
+      roll: 75,
       trainedWeapon: 'Longsword',
       tradeGoods: 'Hide armor',
     },
@@ -594,7 +594,7 @@ export const occupations = new Map([
     {
 			race: 'human',
       occupation: 'Merchant',
-      roll: '76',
+      roll: 76,
       trainedWeapon: 'Dagger',
       tradeGoods: '4 gp, 14 sp, 27 cp',
     },
@@ -604,7 +604,7 @@ export const occupations = new Map([
     {
 			race: 'human',
       occupation: 'Miller/baker',
-      roll: '77',
+      roll: 77,
       trainedWeapon: 'Club',
       tradeGoods: 'Flour, 1 lb.',
     },
@@ -614,7 +614,7 @@ export const occupations = new Map([
     {
 			race: 'human',
       occupation: 'Minstrel',
-      roll: '78',
+      roll: 78,
       trainedWeapon: 'Dagger',
       tradeGoods: 'Ukulele',
     },
@@ -624,7 +624,7 @@ export const occupations = new Map([
     {
 			race: 'human',
       occupation: 'Noble',
-      roll: '79',
+      roll: 79,
       trainedWeapon: 'Longsword',
       tradeGoods: 'Gold ring worth 10 gp',
     },
@@ -634,7 +634,7 @@ export const occupations = new Map([
     {
 			race: 'human',
       occupation: 'Orphan',
-      roll: '80',
+      roll: 80,
       trainedWeapon: 'Club',
       tradeGoods: 'Rag doll',
     },
@@ -644,7 +644,7 @@ export const occupations = new Map([
     {
 			race: 'human',
       occupation: 'Ostler',
-      roll: '81',
+      roll: 81,
       trainedWeapon: 'Staff',
       tradeGoods: 'Bridle',
     },
@@ -654,7 +654,7 @@ export const occupations = new Map([
     {
 			race: 'human',
       occupation: 'Outlaw',
-      roll: '82',
+      roll: 82,
       trainedWeapon: 'Short sword',
       tradeGoods: 'Leather armor',
     },
@@ -664,8 +664,8 @@ export const occupations = new Map([
     {
 			race: 'human',
       occupation: 'Rope maker',
-      roll: '83',
-      trainedWeapon: 'Knife (as dagger)',
+      roll: 83,
+      trainedWeapon: 'Knife',
       tradeGoods: 'Rope, 100’',
     },
   ],
@@ -674,7 +674,7 @@ export const occupations = new Map([
     {
 			race: 'human',
       occupation: 'Scribe',
-      roll: '84',
+      roll: 84,
       trainedWeapon: 'Dart',
       tradeGoods: 'Parchment, 10 sheets',
     },
@@ -684,7 +684,7 @@ export const occupations = new Map([
     {
 			race: 'human',
       occupation: 'Shaman',
-      roll: '85',
+      roll: 85,
       trainedWeapon: 'Mace',
       tradeGoods: 'Herbs, 1 lb.',
     },
@@ -694,7 +694,7 @@ export const occupations = new Map([
     {
 			race: 'human',
       occupation: 'Slave',
-      roll: '86',
+      roll: 86,
       trainedWeapon: 'Club',
       tradeGoods: 'Strange-looking rock',
     },
@@ -704,7 +704,7 @@ export const occupations = new Map([
     {
 			race: 'human',
       occupation: 'Smuggler',
-      roll: '87',
+      roll: 87,
       trainedWeapon: 'Sling',
       tradeGoods: 'Waterproof sack',
     },
@@ -714,7 +714,7 @@ export const occupations = new Map([
     {
 			race: 'human',
       occupation: 'Soldier',
-      roll: '88',
+      roll: 88,
       trainedWeapon: 'Spear',
       tradeGoods: 'Shield',
     },
@@ -724,7 +724,7 @@ export const occupations = new Map([
     {
 			race: 'human',
       occupation: 'Squire',
-      roll: '89-90',
+      roll: [89, 90],
       trainedWeapon: 'Longsword',
       tradeGoods: 'Steel helmet',
     },
@@ -734,7 +734,7 @@ export const occupations = new Map([
     {
 			race: 'human',
       occupation: 'Tax collector',
-      roll: '91',
+      roll: 91,
       trainedWeapon: 'Longsword',
       tradeGoods: '100 cp',
     },
@@ -744,7 +744,7 @@ export const occupations = new Map([
     {
 			race: 'human',
       occupation: 'Trapper',
-      roll: '92-93',
+      roll: [92, 93],
       trainedWeapon: 'Sling',
       tradeGoods: 'Badger pelt',
     },
@@ -754,8 +754,8 @@ export const occupations = new Map([
     {
 			race: 'human',
       occupation: 'Urchin',
-      roll: '94',
-      trainedWeapon: 'Stick (as club)',
+      roll: 94,
+      trainedWeapon: 'Stick',
       tradeGoods: 'Begging bowl',
     },
   ],
@@ -764,9 +764,9 @@ export const occupations = new Map([
     {
 			race: 'human',
       occupation: 'Wainwright',
-      roll: '95',
+      roll: 95,
       trainedWeapon: 'Club',
-      tradeGoods: 'Pushcart***',
+      tradeGoods: 'Pushcart',
     },
   ],
   [
@@ -774,7 +774,7 @@ export const occupations = new Map([
     {
 			race: 'human',
       occupation: 'Weaver',
-      roll: '96',
+      roll: 96,
       trainedWeapon: 'Dagger',
       tradeGoods: 'Fine suit of clothes',
     },
@@ -784,7 +784,7 @@ export const occupations = new Map([
     {
 			race: 'human',
       occupation: 'Wizard’s apprentice',
-      roll: '97',
+      roll: 97,
       trainedWeapon: 'Dagger',
       tradeGoods: 'Black grimoire',
     },
@@ -794,7 +794,7 @@ export const occupations = new Map([
     {
 			race: 'human',
       occupation: 'Woodcutter',
-      roll: '98-100',
+      roll: [98, 99, 100],
       trainedWeapon: 'Handaxe',
       tradeGoods: 'Bundle of wood',
     },

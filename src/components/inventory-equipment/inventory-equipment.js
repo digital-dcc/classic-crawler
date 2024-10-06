@@ -144,7 +144,7 @@ export class InventoryEquipment extends LitElement {
     const stats = equipmentStatsFor(this.name);
     return html`
       <div class="table-row wrapper" part="wrapper">
-        <div class="table-cell">${stats?.name}</div>
+        <div class="table-cell">${stats?.name || this.name}</div>
         <div class="table-cell gap-10">
           <button
             class="quantity-adjustment-button decrement"
