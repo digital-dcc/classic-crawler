@@ -2,6 +2,7 @@
 import { app } from "../firebase/server";
 import { getAuth } from "firebase-admin/auth";
 import Layout from "../layouts/Layout.astro";
+import { Image } from 'astro:assets';
 import { HeaderBar } from "../components/header-bar";
 
 const auth = getAuth(app);
@@ -22,27 +23,74 @@ if (!user) {
 <Layout title="dashboard">
 	<HeaderBar />
 	<section class="main">
-		<h1>Welcome {user.displayName}</h1>
-		<p>We are happy to see you here</p>
-		<div class="signout-form">
-			<form action="/api/auth/signout">
-				<button type="submit">Sign out</button>
-			</form>
+		<h1>My Account</h1>
+		<div class="profile">
+			<div class="profile-image">
+				{user.photoURL && <Image src={user.photoURL} alt="Profile Image" width={100} height={100} />}
+			</div>
+			<div class="user-info">
+				<h2>{user.displayName}</h2>
+				<ul>
+					<li><strong>Email</strong> {user.email}</li>
+					<li><strong>UID</strong> {user.uid}</li>
+					<li><strong>Member Since</strong> {user.metadata.creationTime}</li>
+				</ul>
+			</div>
+			<div class="signout-form">
+				<form action="/api/auth/signout">
+					<button type="submit">Sign out</button>
+				</form>
+			</div>
 		</div>
 	</section>
 </Layout>
 
 <style>
+	h1 {
+		text-align: center;
+	}
+	h2 {
+		margin: 0;
+		padding: 0;
+		font-size: 1.2rem;
+		margin-bottom: 0.2em;
+	}
+	ul {
+		margin: 0;
+		padding: 0;
+		list-style-type: none;
+		line-height: 1.4rem;
+	}
 	.main {
-		width: 1140px;
+		max-width: 1140px;
 		margin: 0 auto;
+		padding: 0em 1em;
+	}
+	.profile {
+		display: flex;
+		flex-direction: row;
+		gap: 1.5em;
+		flex-wrap: wrap;
+		align-items: center;
+		justify-content: center;
+	}
+	.profile .profile-image {
+		flex-shrink: 0;
+	}
+	.profile .profile-image img {
+		border-radius: 5px;
+	}
+	.profile .user-info {
+		flex-grow: 1;
 	}
 	.signout-form button {
 		margin: 0;
-		padding: 10px 20px;
+		padding: 1em 2.5em;
 		border-radius: 5px;
-		border: 1px #ccc solid;
-		background-color: #f3f3f3;
+		border: none;
+		background-color: black;
+		color: white;
 		cursor: pointer;
+		font-size: 1rem;
 	}
 </style>

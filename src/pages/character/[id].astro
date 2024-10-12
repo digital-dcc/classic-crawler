@@ -9,13 +9,15 @@ import { HeaderBar } from "../../components/header-bar";
 const auth = getAuth(app);
 
 if (!Astro.cookies.has("__session")) {
-	return new Response('Unauthorized', { status: 401 });
+	// return new Response('Unauthorized', { status: 401 });
+	return Astro.redirect("/signin");
 }
 
 const sessionCookie = Astro.cookies.get("__session").value;
 const decodedCookie = await auth.verifySessionCookie(sessionCookie);
 if (!decodedCookie) {
-	return new Response('Unauthorized', { status: 401 });
+	// return new Response('Unauthorized', { status: 401 });
+	return Astro.redirect("/signin");
 }
 
 const userId = decodedCookie.uid;

@@ -19,29 +19,38 @@ import "./character-list-card/character-list-card";
 export class CharactersListPage extends LitElement {
   static styles = css`
     .wrapper {
-      width: 1140px;
+      background-color: teal;
+      background-image: url("/images/witch.png");
+    }
+    .inner-wrapper {
+      max-width: 1140px;
       margin: 0 auto;
-      padding: 0px;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      flex-wrap: wrap;
+      padding: 1em;
+      font-size: 1.4rem;
     }
     .title-line {
       display: flex;
       justify-content: space-between;
       align-items: center;
+      background-color: rgb(0, 0, 0, 0.4);
+      padding: 1em;
+      border-radius: 5px;
+      color: white;
     }
-    .character-list {
-      display: flex;
-      flex-wrap: wrap;
+    .title-line h1 {
+      margin: 0;
+      font-size: 2rem;
+    }
+    @media (max-width: 600px) {
+      .title-line h1 {
+        font-size: 1.6rem;
+      }
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 10px;
-    }
-
-    character-list-card {
-      width: calc(
-        33.33% - 20px
-      ); /* Take up 1/3 of the width, with space for gap */
+      grid-auto-rows: 250px;
     }
   `;
 
@@ -111,11 +120,15 @@ export class CharactersListPage extends LitElement {
   render() {
     return html`
       <div class="wrapper">
-        <div class="title-line">
-          <h1>My Characters</h1>
-          <a href="/characters/create">Create</a>
+        <div class="inner-wrapper">
+          <div class="title-line">
+            <h1>My Characters</h1>
+            <a href="/characters/create">Create</a>
+          </div>
         </div>
-        <div class="character-list">
+      </div>
+      <div class="inner-wrapper">
+        <div class="character-list grid">
           ${this.characterData.map(
             ({ id, data }) =>
               html`<character-list-card

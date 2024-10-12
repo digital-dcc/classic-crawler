@@ -4,7 +4,7 @@ import { HeaderBar } from "../components/header-bar";
 ---
 
 <Layout title="Register">
-	<HeaderBar />
+	<HeaderBar hide-links />
 	<section class="main">
 		<h1>Register</h1>
 		<div class="signin-link">
@@ -12,39 +12,66 @@ import { HeaderBar } from "../components/header-bar";
 		</div>
 		<div class="signin-form">
 			<form action="/api/auth/register" method="post">
-				<label for="name">Name</label>
-				<input type="text" name="name" id="name" />
-				<label for="email" for="email">Email</label>
-				<input type="email" name="email" id="email" />
-				<label for="password">Password</label>
-				<input type="password" name="password" id="password" />
-				<button type="submit">Login</button>
+				<input type="text" name="name" id="name" placeholder="Name" required />
+				<input type="email" name="email" id="email" placeholder="Email" required pattern="[a-z0-9._\\-\\+]+@[a-z0-9._\\-]+\.[a-z]{2,}" title="Must be a valid email address" />
+				<input type="password" name="password" id="password" minlength="8" placeholder="Password" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" />
+				<button type="submit">Register</button>
 			</form>
 		</div>
 		</section>
 </Layout>
 
 <style>
+	form {
+		display: flex;
+		flex-direction: column;
+		border-radius: 5px;
+		border:1px black solid;
+		width: 300px;
+		overflow: hidden;
+	}
+	input {
+		display: flex;
+		max-width: 300px;
+		font-size: 1rem;
+		padding: 1em 1em;
+		border: none;
+		margin: 0;
+		background-color: unset;
+		border-bottom: 1px black solid;
+	}
+	input:focus {
+		background-color: #f3f3f3;
+		outline: none;
+	}
+	input:last-of-type {
+		border: none;
+	}
+	input:not(:placeholder-shown):valid {
+    background-color: rgb(0, 255, 0, 0.1);
+  }
+  input:not(:placeholder-shown):invalid {
+    background-color: rgb(255, 0, 0, 0.2);
+  }
 	.main {
-		width: 1140px;
+		max-width: 1140px;
 		margin: 0 auto;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
 	}
 	.register-link {}
-	.signin-form input {
-		border-radius: 5px;
-		border: 1px #ccc solid;
-		margin: 0;
-		padding: 10px;
+	.signin-form button {
+		border: none;
+		background-color: unset;
+		cursor: pointer;
+		padding: 1em 2em;
+		background-color: black;
+		color: white;
+		font-size: 1rem;
 	}
 	.mb-10 {
 		margin-bottom: 10px;
-	}
-	.google-signin button, .signin-form button {
-		margin: 0;
-		padding: 10px 20px;
-		border-radius: 5px;
-		border: 1px #ccc solid;
-		background-color: #f3f3f3;
-		cursor: pointer;
 	}
 </style>

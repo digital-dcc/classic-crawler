@@ -26,38 +26,65 @@ import { formatModifier } from "../utilities/format-modifier";
 // TODO: Accessibility
 // TODO: Responsive
 
-
 export class CharactersCreatePage extends LitElement {
   static get styles() {
     return css`
+      :host,
+      * {
+        box-sizing: border-box;
+        color: black;
+      }
       .wrapper {
-        width: 1140px;
+        background-color: teal;
+        background-image: url("/images/witch.png");
+      }
+      .inner-wrapper {
+        max-width: 1140px;
         margin: 0 auto;
-        padding: 0px;
+        padding: 1em;
+        font-size: 1.4rem;
+      }
+      select {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        background-image: url(/images/caret-down.svg);
+        background-repeat: no-repeat;
+        background-position: right 10px center;
       }
       input,
       select {
         width: 100%;
-        padding: 10px;
+        padding: 0.8em;
         border-radius: 5px;
         border: 1px solid black;
         display: block;
         box-sizing: border-box;
+        font-size: 1.2rem;
       }
       button {
-        width: 100%;
-        background-color: transparent;
-        border-radius: 5px;
-        border: 1px #ccc solid;
-        background-color: #f2f2f2;
-        padding: 10px;
         cursor: pointer;
+      }
+      .submit-button {
         display: block;
-        box-sizing: border-box;
+        background-color: #4caf50;
+        border-radius: 5px;
+        color: white;
+        padding: 1em 1em;
+        text-decoration: none;
+        width: 100%;
+        text-align: center;
+        font-size: 1.4rem;
+        background-image: url("/images/witch.png");
+        border: none;
+        transition: opacity 0.5 ease-in-out;
+      }
+      .submit-button:active {
+        opacity: 0.7;
       }
       .form-elements {
         display: flex;
-        gap: 10px;
+        gap: 1em;
         flex-direction: column;
       }
       .roll-dice-button {
@@ -68,38 +95,55 @@ export class CharactersCreatePage extends LitElement {
         width: 24px;
         height: 24px;
       }
-
       .text-row {
         display: flex;
         flex-direction: row;
         align-items: center;
         justify-content: center;
-        gap: 5px;
+        gap: 1em;
       }
-
-      .stats,
       .row {
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
-        gap: 20px;
+        gap: 2em;
         justify-content: center;
       }
-      .stats {
-        justify-content: space-between;
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 3em;
       }
-      .stats div,
+      @media (max-width: 600px) {
+        .grid {
+          grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+          gap: 1em;
+        }
+      }
+      .grid > div {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
+      }
+      .grid > div > div {
+        display: flex;
+        flex-direction: row;
+        justify-content: right;
+        gap: 0.5em;
+        align-items: center;
+      }
+
       .hit-points,
       .copper-pieces {
         display: flex;
         flex-direction: row;
-        gap: 5px;
+        gap: 1em;
         align-items: center;
       }
       .stats input,
       .hit-points input,
       .copper-pieces input {
-        width: 60px;
+        max-width: 80px;
       }
 
       .alignment {
@@ -107,27 +151,36 @@ export class CharactersCreatePage extends LitElement {
         flex-direction: row;
         align-items: center;
         justify-content: center;
-        gap: 5px;
+        gap: 0.5em;
+        flex-wrap: wrap;
+        width: 100%;
       }
-      .alignment input {
-        visibility: hidden;
-        width: 0;
-        height: 0;
+      .alignment > p {
         margin: 0;
         padding: 0;
+        width: 100%;
+        text-align: left;
+      }
+      .alignment input {
+        position: absolute;
+        opacity: 0;
+        width: 0;
+        height: 0;
       }
       .alignment label {
         display: flex;
         flex-direction: column;
-        gap: 5px;
+        gap: 0.5em;
         align-items: center;
         justify-content: center;
         cursor: pointer;
         border: 1px solid black;
         border-radius: 5px;
-        padding: 10px;
-        width: 60px;
-        height: 60px;
+        padding: 0.5em;
+        width: 30%;
+      }
+      .alignment label:focus {
+        outline: 1px solid #007bff;
       }
       .selected {
         background-color: #f2f2f2;
@@ -139,14 +192,28 @@ export class CharactersCreatePage extends LitElement {
       h1 {
         display: flex;
         flex-direction: row;
-        justify-content: center;
+        justify-content: space-between;
         align-items: center;
-        gap: 10px;
+        gap: 1em;
+        font-size: 2rem;
+        background-color: rgb(0, 0, 0, 0.4);
+        padding: 1em;
+        border-radius: 5px;
+        color: white;
+        margin: 0;
       }
       .form-element {
         display: flex;
         flex-direction: column;
-        gap: 3px;
+        gap: 0.5em;
+      }
+      @media (max-width: 600px) {
+        .alignment label {
+          width: 100%;
+        }
+        h1 {
+          font-size: 1.6rem;
+        }
       }
     `;
   }
@@ -249,7 +316,7 @@ export class CharactersCreatePage extends LitElement {
 
   get data() {
     const languages = ["Common"];
-    const race = occupations.get(this.occupation).race;
+    const race = occupations?.get(this.occupation)?.race;
     if (race === "dwarf" && this.int > 7) languages.push("Dwarvish");
     if (race === "elf" && this.int > 7) languages.push("Elvish");
     if (race === "halfling" && this.int > 7) languages.push("Halfling");
@@ -275,8 +342,8 @@ export class CharactersCreatePage extends LitElement {
       maxHP: this.totalHP,
       occupation: this.occupation,
       equipment: [
-        { name: equipment.get(this.startingEquipment).name, quantity: 1 },
-        { name: occupations.get(this.occupation).tradeGoods, quantity: 1 },
+        { name: equipment?.get(this.startingEquipment)?.name, quantity: 1 },
+        { name: occupations?.get(this.occupation)?.tradeGoods, quantity: 1 },
       ],
       cp: Number(this.cp),
       ep: 0,
@@ -290,7 +357,12 @@ export class CharactersCreatePage extends LitElement {
       xp: 0,
       languages,
       weapons: [
-        { equipped: true, lucky: false, name: occupations.get(this.occupation).trainedWeapon, quantity: 1 },
+        {
+          equipped: true,
+          lucky: false,
+          name: occupations?.get(this.occupation)?.trainedWeapon,
+          quantity: 1,
+        },
       ],
       armor: [],
       mountGear: [],
@@ -561,15 +633,19 @@ export class CharactersCreatePage extends LitElement {
   render() {
     return html`
       <div class="wrapper border">
-        <div class="title">
-          <h1>
-            Create Character
-            ${this.diceButton(() => {
-              this.rollCharacter();
-              this.validate(this.data);
-            })}
-          </h1>
-        </div>
+        <section class="inner-wrapper">
+          <div class="title">
+            <h1>
+              Create Character
+              ${this.diceButton(() => {
+                this.rollCharacter();
+                this.validate(this.data);
+              })}
+            </h1>
+          </div>
+        </section>
+      </div>
+      <section class="inner-wrapper">
         <div class="form">
           <form @submit="${this.onCreateCharacter}">
             <div class="form-elements">
@@ -593,114 +669,126 @@ export class CharactersCreatePage extends LitElement {
                 ${this.nameError &&
                 html`<div class="error">${this.nameError}</div>`}
               </div>
-              <div class="stats">
+              <div class="stats grid">
                 <div class="str">
                   <label for="str">Strength</label>
-                  <input
-                    id="str"
-                    name="str"
-                    type="number"
-                    .value="${this.str}"
-                    min="3"
-                    max="18"
-                    @change="${(e) => (this.str = e.target.value)}"
-                    @blur="${() => this.validateStr(this.data)}"
-                  />
-                  ${this.diceButton((e) => {
-                    e.preventDefault();
-                    this.rollStat("str")();
-                    this.validateStr(this.data);
-                  })}
+                  <div>
+                    <input
+                      id="str"
+                      name="str"
+                      type="number"
+                      .value="${this.str}"
+                      min="3"
+                      max="18"
+                      @change="${(e) => (this.str = e.target.value)}"
+                      @blur="${() => this.validateStr(this.data)}"
+                    />
+                    ${this.diceButton((e) => {
+                      e.preventDefault();
+                      this.rollStat("str")();
+                      this.validateStr(this.data);
+                    })}
+                  </div>
                 </div>
                 <div class="int">
                   <label for="int">Intelligence</label>
-                  <input
-                    id="int"
-                    name="int"
-                    type="number"
-                    .value="${this.int}"
-                    min="3"
-                    max="18"
-                    @change="${(e) => (this.int = e.target.value)}"
-                    @blur="${() => this.validateInt(this.data)}"
-                  />
-                  ${this.diceButton((e) => {
-                    e.preventDefault();
-                    this.rollStat("int")();
-                    this.validateInt(this.data);
-                  })}
+                  <div>
+                    <input
+                      id="int"
+                      name="int"
+                      type="number"
+                      .value="${this.int}"
+                      min="3"
+                      max="18"
+                      @change="${(e) => (this.int = e.target.value)}"
+                      @blur="${() => this.validateInt(this.data)}"
+                    />
+                    ${this.diceButton((e) => {
+                      e.preventDefault();
+                      this.rollStat("int")();
+                      this.validateInt(this.data);
+                    })}
+                  </div>
                 </div>
                 <div class="agl">
                   <label for="agl">Agility</label>
-                  <input
-                    id="agl"
-                    name="agl"
-                    type="number"
-                    .value="${this.agl}"
-                    min="3"
-                    max="18"
-                    @change="${(e) => (this.agl = e.target.value)}"
-                    @blur="${() => this.validateAgl(this.data)}"
-                  />
-                  ${this.diceButton((e) => {
-                    e.preventDefault();
-                    this.rollStat("agl")();
-                    this.validateAgl(this.data);
-                  })}
+                  <div>
+                    <input
+                      id="agl"
+                      name="agl"
+                      type="number"
+                      .value="${this.agl}"
+                      min="3"
+                      max="18"
+                      @change="${(e) => (this.agl = e.target.value)}"
+                      @blur="${() => this.validateAgl(this.data)}"
+                    />
+                    ${this.diceButton((e) => {
+                      e.preventDefault();
+                      this.rollStat("agl")();
+                      this.validateAgl(this.data);
+                    })}
+                  </div>
                 </div>
                 <div class="per">
                   <label for="per">Personality</label>
-                  <input
-                    id="per"
-                    name="per"
-                    type="number"
-                    .value="${this.per}"
-                    min="3"
-                    max="18"
-                    @change="${(e) => (this.per = e.target.value)}"
-                    @blur="${() => this.validatePer(this.data)}"
-                  />
-                  ${this.diceButton((e) => {
-                    e.preventDefault();
-                    this.rollStat("per")();
-                    this.validatePer(this.data);
-                  })}
+                  <div>
+                    <input
+                      id="per"
+                      name="per"
+                      type="number"
+                      .value="${this.per}"
+                      min="3"
+                      max="18"
+                      @change="${(e) => (this.per = e.target.value)}"
+                      @blur="${() => this.validatePer(this.data)}"
+                    />
+                    ${this.diceButton((e) => {
+                      e.preventDefault();
+                      this.rollStat("per")();
+                      this.validatePer(this.data);
+                    })}
+                  </div>
                 </div>
                 <div class="sta">
                   <label for="sta">Stamina</label>
-                  <input
-                    id="sta"
-                    name="sta"
-                    type="number"
-                    .value="${this.sta}"
-                    min="3"
-                    max="18"
-                    @change="${(e) => (this.sta = e.target.value)}"
-                    @blur="${() => this.validateSta(this.data)}"
-                  />
-                  ${this.diceButton((e) => {
-                    e.preventDefault();
-                    this.rollStat("sta")();
-                    this.validateSta(this.data);
-                  })}
+                  <div>
+                    <input
+                      id="sta"
+                      name="sta"
+                      type="number"
+                      .value="${this.sta}"
+                      min="3"
+                      max="18"
+                      @change="${(e) => (this.sta = e.target.value)}"
+                      @blur="${() => this.validateSta(this.data)}"
+                    />
+                    ${this.diceButton((e) => {
+                      e.preventDefault();
+                      this.rollStat("sta")();
+                      this.validateSta(this.data);
+                    })}
+                  </div>
                 </div>
                 <div class="luck">
                   <label for="luck">Luck</label>
-                  <input
-                    id="luck"
-                    name="luck"
-                    type="number"
-                    .value="${this.luck}"
-                    min="3"
-                    max="18"
-                    @change="${(e) => (this.luck = e.target.value)}"
-                    @blur="${() => this.validateLuck(this.data)}"
-                  />
-                  ${this.diceButton((e) => {
-                    e.preventDefault();
-                    this.rollStat("luck")();
-                    this.validateLuck(this.data);
-                  })}
+                  <div>
+                    <input
+                      id="luck"
+                      name="luck"
+                      type="number"
+                      .value="${this.luck}"
+                      min="3"
+                      max="18"
+                      @change="${(e) => (this.luck = e.target.value)}"
+                      @blur="${() => this.validateLuck(this.data)}"
+                    />
+                    ${this.diceButton((e) => {
+                      e.preventDefault();
+                      this.rollStat("luck")();
+                      this.validateLuck(this.data);
+                    })}
+                  </div>
                 </div>
               </div>
               <div class="row">
@@ -717,43 +805,47 @@ export class CharactersCreatePage extends LitElement {
                 ${this.luckError &&
                 html`<div class="error">${this.luckError}</div>`}
               </div>
-              <div class="row">
+              <div class="grid">
                 <div class="hit-points">
                   <label for="hp">Hit Points</label>
-                  <input
-                    id="hp"
-                    name="hp"
-                    type="number"
-                    .value="${this.hp}"
-                    min="1"
-                    @change="${(e) => (this.hp = e.target.value)}"
-                    @blur="${() => this.validateHP(this.data)}"
-                  />
-                  ${this.hp && html`<span>${this.hpModifier}</span>`}
-                  ${this.hp && html`<span>=</span>`}
-                  ${this.hp && html`<span>${this.totalHP}</span>`}
-                  ${this.diceButton((e) => {
-                    e.preventDefault();
-                    this.rollHP();
-                    this.validateHP(this.data);
-                  })}
+                  <div>
+                    <input
+                      id="hp"
+                      name="hp"
+                      type="number"
+                      .value="${this.hp}"
+                      min="1"
+                      @change="${(e) => (this.hp = e.target.value)}"
+                      @blur="${() => this.validateHP(this.data)}"
+                    />
+                    <!--${this.hp && html`<span>${this.hpModifier}</span>`}
+                    ${this.hp && html`<span>=</span>`}
+                    ${this.hp && html`<span>${this.totalHP}</span>`}-->
+                    ${this.diceButton((e) => {
+                      e.preventDefault();
+                      this.rollHP();
+                      this.validateHP(this.data);
+                    })}
+                  </div>
                 </div>
                 <div class="copper-pieces">
                   <label for="cp">Copper Pieces</label>
-                  <input
-                    id="cp"
-                    name="cp"
-                    type="number"
-                    .value="${this.cp}"
-                    min="1"
-                    @change="${(e) => (this.cp = e.target.value)}"
-                    @blur="${() => this.validateCP(this.data)}"
-                  />
-                  ${this.diceButton((e) => {
-                    e.preventDefault();
-                    this.rollCP();
-                    this.validateCP(this.data);
-                  })}
+                  <div>
+                    <input
+                      id="cp"
+                      name="cp"
+                      type="number"
+                      .value="${this.cp}"
+                      min="1"
+                      @change="${(e) => (this.cp = e.target.value)}"
+                      @blur="${() => this.validateCP(this.data)}"
+                    />
+                    ${this.diceButton((e) => {
+                      e.preventDefault();
+                      this.rollCP();
+                      this.validateCP(this.data);
+                    })}
+                  </div>
                 </div>
               </div>
               <div class="row">
@@ -813,7 +905,7 @@ export class CharactersCreatePage extends LitElement {
                           .value="${key}"
                           ?selected="${key === this.birthAugur}"
                         >
-                          ${value.birthAugur} (${value.luckyRoll})
+                          ${value.birthAugur}
                         </option>`
                     )}
                   </select>
@@ -862,20 +954,21 @@ export class CharactersCreatePage extends LitElement {
                 ${this.startingEquipmentError &&
                 html`<div class="error">${this.startingEquipmentError}</div>`}
               </div>
-              <div class="alignment">
+              <div class="alignment" aria-labelledby="alignment">
+                <p id="alignment">Choose character alignment</p>
                 <input
                   type="radio"
                   name="alignment"
                   id="alignment-law"
                   value="law"
                   ?checked="${this.alignment === "law"}"
+                  @click="${() => (this.alignment = "law")}"
                 />
                 <label
                   class="${this.alignment === "law" ? "selected" : ""}"
                   for="alignment-law"
-                  tabindex="0"
+                  tabindex="${this.alignment === "law" ? "0" : "-1"}"
                   @click="${() => (this.alignment = "law")}"
-                  @keydown="${(e) => this.handleKeyDown(e, "law")}"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -897,13 +990,13 @@ export class CharactersCreatePage extends LitElement {
                   id="alignment-neutral"
                   value="neutral"
                   ?checked="${this.alignment === "neutral"}"
+                  @click="${() => (this.alignment = "neutral")}"
                 />
                 <label
                   class="${this.alignment === "neutral" ? "selected" : ""}"
                   for="alignment-neutral"
-                  tabindex="0"
+                  tabindex="${this.alignment === "neutral" ? "0" : "-1"}"
                   @click="${() => (this.alignment = "neutral")}"
-                  @keydown="${(e) => this.handleKeyDown(e, "neutral")}"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -926,13 +1019,13 @@ export class CharactersCreatePage extends LitElement {
                   id="alignment-chaos"
                   value="chaos"
                   ?checked="${this.alignment === "chaos"}"
+                  @click="${() => (this.alignment = "chaos")}"
                 />
                 <label
                   class="${this.alignment === "chaos" ? "selected" : ""}"
                   for="alignment-chaos"
-                  tabindex="0"
+                  tabindex="${this.alignment === "chaos" ? "0" : "-1"}"
                   @click="${() => (this.alignment = "chaos")}"
-                  @keydown="${(e) => this.handleKeyDown(e, "chaos")}"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -956,11 +1049,11 @@ export class CharactersCreatePage extends LitElement {
               ${this.alignmentError &&
               html`<div class="error">${this.alignmentError}</div>`}
 
-              <button type="submit">Create</button>
+              <button class="submit-button" type="submit">Create</button>
             </div>
           </form>
         </div>
-      </div>
+      </section>
     `;
   }
 }

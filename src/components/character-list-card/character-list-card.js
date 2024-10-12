@@ -4,7 +4,7 @@ export class CharacterListCard extends LitElement {
   static get styles() {
     return css`
       .wrapper {
-        min-height: 25px;
+        height: 100%;
         font-family: var(
           --primary-font,
           -apple-system,
@@ -21,24 +21,42 @@ export class CharacterListCard extends LitElement {
         font-size: 1rem;
         align-items: center;
   			box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        background-image: url('/images/witch.png');
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
       }
 			h2 {
 				margin: 0;
-				padding: 0;
+        padding: 0.7em;
 				text-align: center;
+        font-size: 1.5rem;
+        color: white;
+        background: rgba(0, 0, 0, 0.5);
 			}
       .border {
         border-radius: 5px;
         border: 1px black solid;
       }
 			.title {
-				height: 100px;
-				padding: 10px;
+				width: 100%;
+        flex-grow: 1;
+        box-sizing: border-box;
 			}
 			.buttons {
 				border-top: 1px black solid;
-				padding: 10px;
+        width: 100%;
+        flex-shrink: 0;
+        font-size: 1rem;
+        padding: 1em;
+        box-sizing: border-box;
+        background: rgba(0, 0, 0, 0.5);
 			}
+      .buttons a {
+        color: white;
+      }
     `;
   }
 

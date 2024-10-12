@@ -3,68 +3,82 @@ import Layout from '../layouts/Layout.astro';
 import { HeaderBar } from "../components/header-bar";
 ---
 
-<Layout title="Welcome to Astro.">
-	<HeaderBar />
+<Layout title="Classic Crawler - DCC Character Creation Tools">
+	<section class="navigation-bar">
+		<HeaderBar />
+	</section>
 	<main>
-		Hello World
+		<section class="top-container">
+			<div class="hero-container">
+				<div class="hero-content">
+					<h1 class="hero-title">Dungeon Crawl Classics</h1>
+					<h2 class="hero-subtitle">Digital Character Tools</h2>
+					<p>Digital character builder for the Dungeon Crawl Classics tabletop role playing game.</p>
+					<p>Build, manage and run your DCC characters right from your browser.</p>
+					<a class="get-started-button" href="/register">Get Started</a>
+				</div>
+			</div>
+		</section>
+		<section class="main-container">
+			<ul>
+				<li>Easily build characters</li>
+				<li>Manage and run characters at the table</li>
+				<li>Grouped characters for funnel play</li>
+			</ul>
+		</section>
 	</main>
 </Layout>
 
 <style>
-	main {
-		margin: auto;
-		padding: 1rem;
-		width: 800px;
-		max-width: calc(100% - 2rem);
-		color: white;
-		font-size: 20px;
-		line-height: 1.6;
+	* {
+		box-sizing: border-box;
 	}
-	.astro-a {
-		position: absolute;
-		top: -32px;
-		left: 50%;
-		transform: translatex(-50%);
-		width: 220px;
-		height: auto;
-		z-index: -1;
-	}
-	h1 {
-		font-size: 4rem;
-		font-weight: 700;
-		line-height: 1;
-		text-align: center;
-		margin-bottom: 1em;
-	}
-	.text-gradient {
-		background-image: var(--accent-gradient);
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		background-size: 400%;
-		background-position: 0%;
-	}
-	.instructions {
-		margin-bottom: 2rem;
-		border: 1px solid rgba(var(--accent-light), 25%);
-		background: linear-gradient(rgba(var(--accent-dark), 66%), rgba(var(--accent-dark), 33%));
-		padding: 1.5rem;
-		border-radius: 8px;
-	}
-	.instructions code {
-		font-size: 0.8em;
-		font-weight: bold;
-		background: rgba(var(--accent-light), 12%);
-		color: rgb(var(--accent-light));
-		border-radius: 4px;
-		padding: 0.3em 0.4em;
-	}
-	.instructions strong {
-		color: rgb(var(--accent-light));
-	}
-	.link-card-grid {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
-		gap: 2rem;
+	h1, h2 {
+		margin: 0;
 		padding: 0;
+		font-size: 2.5rem;
+	}
+	h2 {
+		font-size: 1.5rem;
+	}
+	.top-container {
+		background-image: url('/images/hellscape.png');
+		background-size: cover;
+		background-position: center;
+		background-repeat: no-repeat;
+	}
+	.hero-container {
+		font-size: 1rem;
+		max-width: 1140px;
+		margin: 0 auto;
+		padding: 2.5em 1em;
+	}
+	.hero-content {
+		background: rgb(0,0,0,0.4);
+		padding: 2.5em;
+		color: white;
+		border-radius: 5px;
+		width: 50%;
+	}
+	@media (max-width: 600px) {
+		.hero-content {
+			width: unset;
+		}
+	}
+	.hero-content h1, p {}
+	.main-container {
+		max-width: 1140px;
+		margin: 0 auto;
+		padding: 1em;
+	}
+	.get-started-button {
+		display: inline-block;
+		background-color: #4CAF50;
+		border-radius: 5px;
+		color: white;
+		padding: 1em 1em;
+		text-decoration: none;
+		width: 100%;
+		text-align: center;
 	}
 </style>

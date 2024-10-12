@@ -1,0 +1,15 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { HeaderBar } from "../components/header-bar";
+const { error } = Astro.props
+---
+
+<Layout>
+  <HeaderBar hide-links />
+  <section style="text-align: center; margin-top: 50px;">
+    <h1>500 - Uh Oh!</h1>
+    <p>You've encoutered a server error.</p>
+		<p>Additional info: {error instanceof Error ? error.message : 'Unknown error'}</p>
+    <a href="/" style="color: blue; text-decoration: underline;">Return to Home</a>
+  </section>
+</Layout>
