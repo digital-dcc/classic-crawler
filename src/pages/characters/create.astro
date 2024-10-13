@@ -12,8 +12,14 @@ if (!Astro.cookies.has("__session")) {
 	return Astro.redirect("/signin");
 }
 
-const sessionCookie = Astro.cookies.get("__session").value;
-const decodedCookie = await auth.verifySessionCookie(sessionCookie);
+let decodedCookie;
+try {
+	const sessionCookie = Astro.cookies.get("__session").value;
+	decodedCookie = await auth.verifySessionCookie(sessionCookie);
+} catch (error) {
+	return Astro.redirect("/signin");
+}
+
 if (!decodedCookie) {
 	// return new Response('Unauthorized', { status: 401 });
 	return Astro.redirect("/signin");
