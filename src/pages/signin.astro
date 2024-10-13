@@ -7,8 +7,13 @@ import { HeaderBar } from "../components/header-bar";
 /* Check if the user is authenticated */
 const auth = getAuth(app);
 if (Astro.cookies.has("__session")) {
-  const sessionCookie = Astro.cookies.get("__session").value;
-  const decodedCookie = await auth.verifySessionCookie(sessionCookie);
+  let decodedCookie;
+  try {
+    const sessionCookie = Astro.cookies.get("__session").value;
+    decodedCookie = await auth.verifySessionCookie(sessionCookie);
+  } catch (error) {
+    // noop, if the cookie is invalid, the user is not authenticated yet
+  }
   if (decodedCookie) {
     return Astro.redirect("/characters");
   }
