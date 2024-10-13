@@ -1,6 +1,20 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import { app } from "../firebase/server";
+import { getAuth } from "firebase-admin/auth";
+import Layout from "../layouts/Layout.astro";
 import { HeaderBar } from "../components/header-bar";
+
+/* Check if the user is authenticated */
+let decodedCookie;
+const auth = getAuth(app);
+if (Astro.cookies.has("__session")) {
+  try {
+    const sessionCookie = Astro.cookies.get("__session").value;
+    decodedCookie = await auth.verifySessionCookie(sessionCookie);
+  } catch (error) {
+    // noop, if the cookie is invalid, the user is not authenticated yet
+  }
+}
 ---
 
 <Layout title="Classic Crawler - DCC Character Creation Tools">
@@ -15,7 +29,7 @@ import { HeaderBar } from "../components/header-bar";
 					<h2 class="hero-subtitle">Digital Character Tools</h2>
 					<p>Digital character builder for the Dungeon Crawl Classics tabletop role playing game.</p>
 					<p>Build, manage and run your DCC characters right from your browser.</p>
-					<a class="get-started-button" href="/register">Get Started</a>
+					<a class="get-started-button" href={decodedCookie ? '/characters' : '/signin'}>Get Started</a>
 				</div>
 			</div>
 		</section>
